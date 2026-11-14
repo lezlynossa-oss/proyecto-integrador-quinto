@@ -16,3 +16,6 @@ output "tabla_dynamodb" {
 output "lambda_nombre" {
   value = aws_lambda_function.prediccion.function_name
 }
+output "url_api" {
+  value = "${aws_apigatewayv2_api.api.api_endpoint}/predict"
+}

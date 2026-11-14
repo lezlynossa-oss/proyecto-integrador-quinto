@@ -6,11 +6,11 @@ data "archive_file" "lambda" {
 }
 
 resource "aws_lambda_function" "prediccion" {
-  function_name = local.nombre_lambda          # "asp-prediccion"
-  role          = aws_iam_role.lambda.arn       # el rol del bloque anterior
+  function_name = local.nombre_lambda     # "asp-prediccion"
+  role          = aws_iam_role.lambda.arn # el rol del bloque anterior
   runtime       = "python3.12"
-  handler       = "handler.lambda_handler"      # archivo.función
-  architectures = ["arm64"]                     # procesador Graviton: ~20% más barato
+  handler       = "handler.lambda_handler" # archivo.función
+  architectures = ["arm64"]                # procesador Graviton: ~20% más barato
 
   filename         = data.archive_file.lambda.output_path
   source_code_hash = data.archive_file.lambda.output_base64sha256 # detecta cambios en el código
