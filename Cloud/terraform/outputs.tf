@@ -10,3 +10,6 @@ output "bucket_web" {
 output "url_web" {
   value = "http://${aws_s3_bucket_website_configuration.web.website_endpoint}"
 }
+output "tabla_dynamodb" {
+  value = aws_dynamodb_table.predicciones.name
+}
