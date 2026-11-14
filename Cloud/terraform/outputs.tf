@@ -13,3 +13,6 @@ output "url_web" {
 output "tabla_dynamodb" {
   value = aws_dynamodb_table.predicciones.name
 }
+output "lambda_nombre" {
+  value = aws_lambda_function.prediccion.function_name
+}

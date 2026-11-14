@@ -4,8 +4,12 @@ terraform {
 
   required_providers {
     aws = {
-      source  = "hashicorp/aws" # el plugin oficial de AWS
-      version = "~> 6.0"        # cualquier versión 6.x (evita cambios incompatibles)
+      source  = "hashicorp/aws"
+      version = "~> 6.0"
+    }
+    archive = {
+      source  = "hashicorp/archive"
+      version = "~> 2.0"
     }
   }
 }
