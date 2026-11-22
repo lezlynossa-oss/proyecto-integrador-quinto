@@ -524,11 +524,11 @@ id_persona,factor_expansion,localidad,cluster,perfil
 19094005,2.5,Ciudad Bolívar,1,Migrantes de llegada reciente
 19094006,2.5,Ciudad Bolívar,1,Migrantes de llegada reciente
 19095001,1.3636363744735718,Ciudad Bolívar,1,Migrantes de llegada reciente
-19095002,2.727272748947144,Ciudad Bolívar,1,Migrantes de llegada reciente
-19095003,2.727272748947144,Ciudad Bolívar,2,Colombianas establecidas con precariedad económica
-19095004,2.727272748947144,Ciudad Bolívar,1,Migrantes de llegada reciente
-19095005,2.727272748947144,Ciudad Bolívar,1,Migrantes de llegada reciente
-19095006,2.727272748947144,Ciudad Bolívar,1,Migrantes de llegada reciente
+19095002,2.7272727489471436,Ciudad Bolívar,1,Migrantes de llegada reciente
+19095003,2.7272727489471436,Ciudad Bolívar,2,Colombianas establecidas con precariedad económica
+19095004,2.7272727489471436,Ciudad Bolívar,1,Migrantes de llegada reciente
+19095005,2.7272727489471436,Ciudad Bolívar,1,Migrantes de llegada reciente
+19095006,2.7272727489471436,Ciudad Bolívar,1,Migrantes de llegada reciente
 19096001,2.5,Ciudad Bolívar,1,Migrantes de llegada reciente
 19096002,2.5,Ciudad Bolívar,1,Migrantes de llegada reciente
 19096003,2.5,Ciudad Bolívar,1,Migrantes de llegada reciente
@@ -1039,11 +1039,11 @@ id_persona,factor_expansion,localidad,cluster,perfil
 80150013,2.0833332538604736,Kennedy,1,Migrantes de llegada reciente
 80150014,2.0833332538604736,Kennedy,1,Migrantes de llegada reciente
 80150015,11.458333015441896,Kennedy,1,Migrantes de llegada reciente
-80152001,2.400000095367432,Kennedy,1,Migrantes de llegada reciente
-80152002,2.400000095367432,Kennedy,1,Migrantes de llegada reciente
-80152003,2.400000095367432,Kennedy,1,Migrantes de llegada reciente
-80152004,2.400000095367432,Kennedy,1,Migrantes de llegada reciente
-80152005,2.400000095367432,Kennedy,1,Migrantes de llegada reciente
+80152001,2.4000000953674316,Kennedy,1,Migrantes de llegada reciente
+80152002,2.4000000953674316,Kennedy,1,Migrantes de llegada reciente
+80152003,2.4000000953674316,Kennedy,1,Migrantes de llegada reciente
+80152004,2.4000000953674316,Kennedy,1,Migrantes de llegada reciente
+80152005,2.4000000953674316,Kennedy,1,Migrantes de llegada reciente
 80154001,1.8181818723678589,Kennedy,2,Colombianas establecidas con precariedad económica
 80154002,1.8181818723678589,Kennedy,0,Alta exposición a violencias
 80154003,1.8181818723678589,Kennedy,2,Colombianas establecidas con precariedad económica
@@ -1428,16 +1428,16 @@ id_persona,factor_expansion,localidad,cluster,perfil
 100109016,2.0202019214630127,Engativá,1,Migrantes de llegada reciente
 100109017,2.0202019214630127,Engativá,1,Migrantes de llegada reciente
 100109018,2.777777910232544,Engativá,1,Migrantes de llegada reciente
-100110001,2.240740776062012,Engativá,1,Migrantes de llegada reciente
-100110002,2.240740776062012,Engativá,1,Migrantes de llegada reciente
+100110001,2.2407407760620117,Engativá,1,Migrantes de llegada reciente
+100110002,2.2407407760620117,Engativá,1,Migrantes de llegada reciente
 100110003,1.8333332538604736,Engativá,1,Migrantes de llegada reciente
-100110004,2.240740776062012,Engativá,1,Migrantes de llegada reciente
-100110005,2.240740776062012,Engativá,1,Migrantes de llegada reciente
-100110006,2.240740776062012,Engativá,1,Migrantes de llegada reciente
-100110007,2.240740776062012,Engativá,1,Migrantes de llegada reciente
-100110008,2.240740776062012,Engativá,1,Migrantes de llegada reciente
-100110009,2.240740776062012,Engativá,1,Migrantes de llegada reciente
-100110010,2.240740776062012,Engativá,1,Migrantes de llegada reciente
+100110004,2.2407407760620117,Engativá,1,Migrantes de llegada reciente
+100110005,2.2407407760620117,Engativá,1,Migrantes de llegada reciente
+100110006,2.2407407760620117,Engativá,1,Migrantes de llegada reciente
+100110007,2.2407407760620117,Engativá,1,Migrantes de llegada reciente
+100110008,2.2407407760620117,Engativá,1,Migrantes de llegada reciente
+100110009,2.2407407760620117,Engativá,1,Migrantes de llegada reciente
+100110010,2.2407407760620117,Engativá,1,Migrantes de llegada reciente
 100113001,4.0,Engativá,2,Colombianas establecidas con precariedad económica
 100120001,4.25,Engativá,1,Migrantes de llegada reciente
 100120002,4.25,Engativá,1,Migrantes de llegada reciente
@@ -1744,22 +1744,22 @@ id_persona,factor_expansion,localidad,cluster,perfil
 140215013,1.1176470518112185,Los Mártires,1,Migrantes de llegada reciente
 140215014,1.3039215803146362,Los Mártires,1,Migrantes de llegada reciente
 140215015,1.3039215803146362,Los Mártires,1,Migrantes de llegada reciente
-140216001,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216002,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216003,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216004,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216005,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216006,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216007,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216008,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216009,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216010,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216011,3.349359035491944,Los Mártires,2,Colombianas establecidas con precariedad económica
-140216012,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216013,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216014,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216015,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
-140216016,3.349359035491944,Los Mártires,1,Migrantes de llegada reciente
+140216001,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216002,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216003,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216004,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216005,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216006,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216007,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216008,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216009,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216010,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216011,3.3493590354919434,Los Mártires,2,Colombianas establecidas con precariedad económica
+140216012,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216013,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216014,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216015,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
+140216016,3.3493590354919434,Los Mártires,1,Migrantes de llegada reciente
 140216017,1.4102563858032229,Los Mártires,1,Migrantes de llegada reciente
 140217001,1.3636363744735718,Los Mártires,2,Colombianas establecidas con precariedad económica
 140217002,1.3636363744735718,Los Mártires,1,Migrantes de llegada reciente
