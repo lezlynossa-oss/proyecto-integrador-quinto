@@ -18,9 +18,9 @@ def normalizar_localidad(texto: str) -> str:
 
 def main():
     # 1. Cargar las tres bases limpias
-    asp = pd.read_csv("data/asp_2022_variables_renombradas.csv")
-    pob = pd.read_csv("data/pobreza_localidade_limpio.csv")
-    afi = pd.read_csv("data/afiliacion_localidades_limpio.csv")
+    asp = pd.read_csv("data/raw/asp_2022_variables_renombradas.csv")
+    pob = pd.read_csv("data/processed/pobreza_localidade_limpio.csv")
+    afi = pd.read_csv("data/processed/afiliacion_localidades_limpio.csv")
 
     # 2. Crear llave normalizada para asegurar cruce exacto (100% de las 19 localidades)
     asp["_key_loc"] = asp["localidad"].apply(normalizar_localidad)
@@ -53,7 +53,7 @@ def main():
     df_integrado = df_integrado[cols_inicio + otras_cols]
 
     # 5. Guardar dataset integrado
-    ruta_salida = "data/asp_2022_saludata_integrado.csv"
+    ruta_salida = "data/processed/asp_2022_saludata_integrado.csv"
     df_integrado.to_csv(ruta_salida, index=False, encoding="utf-8-sig")
 
     # 6. Resumen ordenado en consola

@@ -8,3 +8,10 @@
 crash.log
 # Paquetes generados
 build/
+
+# Jupyter y Python
+.ipynb_checkpoints/
+__pycache__/
+
+# PDF del boletín de SaluData (se descarga con el script de scraping)
+data/raw/saludata/

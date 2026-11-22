@@ -16,7 +16,7 @@ Módulo de web scraping, limpieza e integración de indicadores socioeconómicos
 
 ## 2. Estructura de Archivos
 
-### Scripts (`Mineria/Limpieza de datos/scraping/`)
+### Scripts (`Mineria/scraping/`)
 * **`scraping_saludata.py`**: Descarga el boletín oficial en caché local (`data/raw/saludata/`) para evitar peticiones redundantes al servidor, verifica las tablas objetivo mediante `pdfplumber` y expresiones regulares (`re`), normaliza nombres/códigos de localidad y exporta los datasets limpios.
 * **`integracion_asp_saludata.py`**: Normaliza las llaves textuales de localidad (tildes, mayúsculas y alias como `RAFAEL URIBE` → `Rafael Uribe Uribe`) y ejecuta un cruce `left` (`m:1`) entre los 3,004 registros de la encuesta ASP 2022 y los indicadores de SaluData.
 
