@@ -23,8 +23,16 @@ resource "aws_lambda_function" "prediccion" {
     variables = {
       TABLA_PREDICCIONES = aws_dynamodb_table.predicciones.name
       BUCKET_MODELO      = aws_s3_bucket.datos.bucket
+      # Huella de los archivos del modelo: si se reentrena y cambian, Lambda
+      # descarta las copias en memoria y vuelve a leer los JSON nuevos de S3
+      VERSION_MODELO = substr(md5("${aws_s3_object.clustering.etag}${aws_s3_object.modelo_afiliacion.etag}"), 0, 8)
     }
   }
 
-  depends_on = [aws_cloudwatch_log_group.lambda, aws_iam_role_policy.lambda]
+  depends_on = [
+    aws_cloudwatch_log_group.lambda,
+    aws_iam_role_policy.lambda,
+    aws_s3_object.clustering, # el modelo debe estar en S3 antes de que Lambda arranque
+    aws_s3_object.modelo_afiliacion,
+  ]
 }
