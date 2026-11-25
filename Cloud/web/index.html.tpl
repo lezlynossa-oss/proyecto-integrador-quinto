@@ -59,11 +59,53 @@
     .error { background: #fef2f2; color: #991b1b; border-radius: 8px; padding: 1rem; font-size: .9rem; }
     .error ul { margin: .5rem 0 0; padding-left: 1.1rem; }
     footer { font-size: .8rem; color: var(--gris); line-height: 1.5; text-align: center; }
+    /* ---- Pestañas ---- */
+    .tabs { display: flex; gap: .5rem; margin-bottom: 1.25rem; }
+    .tabs button { margin: 0; width: auto; flex: 1; padding: .7rem 1rem; background: #fff; color: var(--texto); border: 1px solid var(--borde); font-size: .95rem; }
+    .tabs button.activa { background: var(--morado); color: #fff; border-color: var(--morado); }
+    .pestana { display: none; }
+    .pestana.activa { display: block; }
+
+    /* ---- Dashboard ---- */
+    .kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: .6rem; margin-top: 1.25rem; }
+    @media (max-width: 600px) { .kpis { grid-template-columns: 1fr 1fr; } }
+    .kpi { border: 1px solid var(--borde); border-radius: 10px; padding: .8rem .5rem; text-align: center; font-size: .8rem; color: var(--gris); cursor: pointer; transition: border-color .15s, transform .15s; }
+    .kpi:hover { border-color: var(--morado); transform: translateY(-2px); }
+    .kpi b { display: block; font-size: 1.45rem; color: var(--texto); font-variant-numeric: tabular-nums; }
+    .indice { position: sticky; top: 0; z-index: 5; display: flex; gap: .4rem; flex-wrap: wrap; padding: .6rem 0; background: var(--fondo); margin-bottom: .5rem; }
+    .indice a { padding: .35rem .8rem; border-radius: 999px; background: #fff; border: 1px solid var(--borde); color: var(--texto); text-decoration: none; font-size: .85rem; }
+    .indice a:hover { border-color: var(--morado); color: var(--morado); }
+    .seccion-dash { scroll-margin-top: 3.5rem; }
+    .seccion-dash > h2 { font-size: 1.1rem; margin: 1.5rem 0 .75rem; }
+    .grafica h3 { font-size: 1rem; margin: 0 0 .25rem; }
+    .grafica .hallazgo { margin: .5rem 0 0; font-size: .95rem; line-height: 1.5; }
+    .grafica .hallazgo::before { content: "→ "; color: var(--morado); font-weight: 700; }
+    .pie-dash { font-size: .8rem; color: var(--gris); line-height: 1.5; margin: 0 0 1.5rem; }
   </style>
+  <script src="https://cdn.plot.ly/plotly-4.1.1.min.js"></script>
 </head>
 <body>
   <div class="contenedor">
 
+    <nav class="tabs">
+      <button type="button" class="activa" data-pestana="pestana-dashboard">Dashboard</button>
+      <button type="button" data-pestana="pestana-prediccion">Predicción</button>
+    </nav>
+
+    <!-- ===== Pestaña Dashboard: estadística descriptiva de la encuesta ===== -->
+    <section id="pestana-dashboard" class="pestana activa">
+      <div class="card">
+        <h1>Qué muestra la Encuesta ASP 2022</h1>
+        <p class="sub">Panorama de las personas que realizan actividades sexuales pagadas (ASP) en Bogotá, según la encuesta de caracterización de la Secretaría Distrital de la Mujer. Haz clic en una cifra para ir a su sección.</p>
+        <div class="kpis" id="kpis"></div>
+      </div>
+      <nav class="indice" id="indice"></nav>
+      <div id="secciones-dash"></div>
+      <p class="pie-dash">Todos los porcentajes están ponderados con el factor de expansión de la encuesta, así que representan a la población y no solo a las personas encuestadas. No se muestran grupos con menos de 10 respuestas. Pasa el cursor sobre una barra para ver cuántas respuestas hay detrás.</p>
+    </section>
+
+    <!-- ===== Pestaña Predicción (formulario existente) ===== -->
+    <section id="pestana-prediccion" class="pestana">
     <div class="card">
       <h1>Vulnerabilidad en el acceso a salud</h1>
       <p class="sub">Herramienta de apoyo para identificar el perfil de vulnerabilidad y el riesgo de no afiliación a salud de personas que realizan actividades sexuales pagadas (ASP) en Bogotá. Modelos entrenados con la Encuesta ASP 2022 de la Secretaría Distrital de la Mujer.</p>
@@ -178,6 +220,7 @@
     </div>
 
     <div class="card" id="resultado"></div>
+    </section>
 
     <footer>
       Prototipo académico · Proyecto integrador (Minería de Datos, Machine Learning y Cloud Computing) · Universidad Santo Tomás, Tunja.<br>
@@ -304,6 +347,121 @@
           boton.textContent = "Calcular perfil y riesgo";
         });
     });
+    // ===================== Pestañas y dashboard =====================
+    // Cada cifra clave lleva a la sección que la explica
+    var SECCION_DE_KPI = {
+      "encuestas": "Dónde están",
+      "sin afiliación a salud": "Acceso a salud",
+      "migrantes": "Acceso a salud",
+      "edad mediana": "Quiénes son"
+    };
+
+    function idSeccion(nombre) {
+      return "sec-" + nombre.toLowerCase().normalize("NFD").replace(/[^a-z0-9]+/g, "-");
+    }
+
+    function irA(seccion) {
+      var destino = document.getElementById(idSeccion(seccion));
+      if (destino) destino.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function dibujarDashboard(d) {
+      // Cifras clave
+      var kpis = document.getElementById("kpis");
+      d.kpis.forEach(function (k) {
+        var div = document.createElement("div");
+        div.className = "kpi";
+        div.innerHTML = "<b></b><span></span>";
+        div.querySelector("b").textContent = k.valor;
+        div.querySelector("span").textContent = k.etiqueta;
+        if (SECCION_DE_KPI[k.etiqueta]) {
+          div.addEventListener("click", function () { irA(SECCION_DE_KPI[k.etiqueta]); });
+        }
+        kpis.appendChild(div);
+      });
+
+      // Secciones, índice y una tarjeta por gráfica
+      var contenedor = document.getElementById("secciones-dash");
+      var indice = document.getElementById("indice");
+      var secciones = {};
+      d.figuras.forEach(function (g) {
+        var nombreSec = g.seccion || "Resultados";
+        if (!secciones[nombreSec]) {
+          var sec = document.createElement("div");
+          sec.className = "seccion-dash";
+          sec.id = idSeccion(nombreSec);
+          var h2 = document.createElement("h2");
+          h2.textContent = nombreSec;
+          sec.appendChild(h2);
+          contenedor.appendChild(sec);
+          secciones[nombreSec] = sec;
+
+          var enlace = document.createElement("a");
+          enlace.href = "#" + sec.id;
+          enlace.textContent = nombreSec;
+          enlace.addEventListener("click", function (e) { e.preventDefault(); irA(nombreSec); });
+          indice.appendChild(enlace);
+        }
+
+        var layout = g.figura.layout || {};
+        var tarjeta = document.createElement("div");
+        tarjeta.className = "card grafica";
+        var titulo = document.createElement("h3");
+        titulo.textContent = (layout.title && layout.title.text) || "";
+        var grafica = document.createElement("div");
+        var hallazgo = document.createElement("p");
+        hallazgo.className = "hallazgo";
+        hallazgo.textContent = g.nota || "";
+        tarjeta.appendChild(titulo);
+        tarjeta.appendChild(grafica);
+        if (g.nota) tarjeta.appendChild(hallazgo);
+        secciones[nombreSec].appendChild(tarjeta);
+
+        // El título va en la tarjeta (así se ajusta en el celular), no dentro de la gráfica
+        delete layout.title;
+        layout.margin = { t: 20, l: 10, r: 60, b: 50 };
+        layout.font = { family: "system-ui, -apple-system, sans-serif", size: 12, color: "#1f2937" };
+        layout.hoverlabel = { bgcolor: "#fff", bordercolor: "#6d3fb0", font: { color: "#1f2937" } };
+        if (layout.yaxis) layout.yaxis.automargin = true;
+        if (layout.xaxis) layout.xaxis.automargin = true;
+        layout.xaxis = layout.xaxis || {};
+        layout.xaxis.fixedrange = true;   // sin zoom accidental al tocar en el celular
+        layout.yaxis = layout.yaxis || {};
+        layout.yaxis.fixedrange = true;
+
+        Plotly.newPlot(grafica, g.figura.data, layout, {
+          responsive: true,
+          displaylogo: false,
+          modeBarButtons: [["toImage"]],   // solo el botón de descargar como imagen
+          toImageButtonOptions: { filename: "asp-" + g.nombre }
+        });
+      });
+    }
+
+    var dashboardCargado = false;
+    function cargarDashboard() {
+      if (dashboardCargado) return;
+      dashboardCargado = true;
+      fetch("dashboard.json")
+        .then(function (r) { return r.json(); })
+        .then(dibujarDashboard)
+        .catch(function () {
+          document.getElementById("kpis").textContent = "No se pudo cargar el dashboard.";
+        });
+    }
+
+    document.querySelectorAll(".tabs button").forEach(function (boton) {
+      boton.addEventListener("click", function () {
+        document.querySelectorAll(".tabs button, .pestana").forEach(function (el) {
+          el.classList.remove("activa");
+        });
+        boton.classList.add("activa");
+        document.getElementById(boton.dataset.pestana).classList.add("activa");
+        if (boton.dataset.pestana === "pestana-dashboard") cargarDashboard();
+      });
+    });
+
+    cargarDashboard();   // el dashboard es la pestaña que se ve al entrar
   </script>
 </body>
 </html>
