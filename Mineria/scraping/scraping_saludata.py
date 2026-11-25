@@ -10,11 +10,11 @@ De ese PDF se extraen dos tablas por localidad:
   - C2-Tabla 2: Afiliación según régimen de aseguramiento en el SGSSS
     (subsidiado, contributivo, excepción; 2020-2023)
 
-Uso (con el entorno virtual activado):
+Uso (desde la raíz del repositorio, con el entorno virtual activado):
   1) Ver el texto de las páginas de las tablas (hazlo primero):
-       python scraping_saludata.py --debug
+       python Mineria/scraping/scraping_saludata.py --debug
   2) Extraer las tablas a CSV:
-       python scraping_saludata.py
+       python Mineria/scraping/scraping_saludata.py
 """
 
 import argparse
