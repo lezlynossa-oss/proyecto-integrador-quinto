@@ -1,0 +1,12 @@
+pandas
+numpy
+scipy
+scikit-learn==1.9.1
+matplotlib
+seaborn
+plotly
+shap
+joblib
+requests
+pdfplumber
+jupyter
