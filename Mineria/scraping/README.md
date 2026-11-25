@@ -30,5 +30,37 @@ Módulo de web scraping, limpieza e integración de indicadores socioeconómicos
 ## 3. Requisitos y Ejecución
 
 ### Dependencias
+
 ```bash
-pip install requests pdfplumber pandas
+pip install -r requirements.txt
+```
+
+(o solo las de este módulo: `pip install requests pdfplumber pandas`)
+
+### Ejecución
+
+Los scripts se ejecutan **desde la raíz del repositorio**, porque usan rutas `data/...`:
+
+```bash
+# 1. Ver el texto de las páginas de las tablas (opcional, para revisar)
+python Mineria/scraping/scraping_saludata.py --debug
+
+# 2. Descargar el boletín y extraer las tablas
+python Mineria/scraping/scraping_saludata.py
+
+# 3. Limpiar las tablas (nombres de columnas y porcentajes propios)
+python Mineria/scraping/limpieza_saludata.py
+
+# 4. Cruzar los indicadores con la encuesta ASP 2022
+python Mineria/scraping/integracion_asp_saludata.py
+```
+
+El PDF se guarda en `data/raw/saludata/` (está en `.gitignore`, no se sube al repositorio). Si ya está descargado, el script no lo vuelve a pedir al servidor.
+
+### Archivos que genera
+
+| Paso | Archivo |
+| --- | --- |
+| 2 | `data/processed/saludata_pobreza_localidad_crudo.csv`, `data/processed/saludata_afiliacion_localidad_crudo.csv` |
+| 3 | `data/processed/pobreza_localidade_limpio.csv`, `data/processed/afiliacion_localidades_limpio.csv` |
+| 4 | `data/processed/asp_2022_saludata_integrado.csv` |
