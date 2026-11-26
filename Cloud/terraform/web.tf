@@ -8,7 +8,7 @@ resource "aws_s3_object" "index" {
     url_api = "${aws_apigatewayv2_api.api.api_endpoint}/predict"
   })
 }
-# Sube los datos agregados del dashboard (se generan con Mineria/03_dashboard_eda.ipynb)
+# Sube los datos agregados del dashboard (se generan con Mineria/EDA/03_dashboard_eda.ipynb)
 resource "aws_s3_object" "dashboard" {
   bucket       = aws_s3_bucket.web.id
   key          = "dashboard.json"
